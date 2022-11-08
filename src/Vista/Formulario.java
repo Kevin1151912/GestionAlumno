@@ -34,8 +34,8 @@ public class Formulario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtAlumno = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
+        txtNombreA = new javax.swing.JTextField();
+        txtApellidoA = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtGenero = new javax.swing.JTextField();
         btnBuscarA = new javax.swing.JButton();
@@ -69,9 +69,9 @@ public class Formulario extends javax.swing.JFrame {
 
         txtAlumno.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
 
-        txtNombre.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        txtNombreA.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
 
-        txtApellido.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        txtApellidoA.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
 
         txtEmail.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
 
@@ -127,8 +127,8 @@ public class Formulario extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAlumno)
-                            .addComponent(txtNombre)
-                            .addComponent(txtApellido)
+                            .addComponent(txtNombreA)
+                            .addComponent(txtApellidoA)
                             .addComponent(txtEmail)
                             .addComponent(txtGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,11 +146,11 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -271,9 +271,9 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTextField txtAlumno;
-    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtApellidoA;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtGenero;
-    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtNombreA;
     // End of variables declaration//GEN-END:variables
 }
