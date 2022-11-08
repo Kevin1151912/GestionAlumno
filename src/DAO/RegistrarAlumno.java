@@ -52,4 +52,16 @@ public class RegistrarAlumno {
         return a;
     }
     
+    public static void actualizar(Connection cn,Integer idAlumno,String nombre,String apellido ,String email,String genero) throws SQLException{
+        try{
+            PreparedStatement consulta;
+            consulta=cn.prepareStatement("UPDATE alumno set nombre='"+nombre+"' , apellido='"+apellido+"' ,email='"+email+"',genero='"+genero+"' where idAlumno='"+idAlumno+"'");
+            consulta.executeUpdate();
+            System.out.println("Actualiza");
+        }catch(SQLException e){
+            System.out.println("E actualizar");
+            throw new SQLException(e);
+        }
+    }
+    
 }

@@ -33,23 +33,35 @@ public class RegistrarMateria {
         }
     }
     
-    public static Alumno buscar(Connection cn,Integer idAlumno) throws SQLException{
-        Alumno a =new Alumno();
+    public static Materia buscar(Connection cn,Integer idMateria) throws SQLException{
+        Materia m =new Materia();
         try{
             PreparedStatement consulta;
-            consulta=cn.prepareStatement("Select nombre as name , apellido as ape , email as ema , genero as gen from alumno where idAlumno='"+idAlumno+"'");
+            consulta=cn.prepareStatement("Select nombre as name , apellido as ape , profesor as pro , creditos as cre from materia where idMateria='"+idMateria+"'");
             ResultSet rs=consulta.executeQuery();
             if(rs.next()){
-                a.setNombre(rs.getString("name"));
-                a.setApellido(rs.getString("ape"));
-                a.setEmail(rs.getString("ema"));
-                a.setGenero(rs.getString("gen"));
+                m.setNombre(rs.getString("name"));
+                m.setApellido(rs.getString("ape"));
+                m.setProfesor(rs.getString("pro"));
+                m.setCreditos(rs.getString("cre"));
                 
             }
         }catch(SQLException e){
             throw new SQLException(e);
         }
-        return a;
+        return m;
+    }
+    
+    public static void actualizar(Connection cn,Integer idMateria,String nombre,String apellido ,String profesor,String creditos) throws SQLException{
+        try{
+            PreparedStatement consulta;
+            consulta=cn.prepareStatement("UPDATE materia set nombre='"+nombre+"' , apellido='"+apellido+"' ,profesor='"+profesor+"',creditos='"+creditos+"' where idMateria='"+idMateria+"'");
+            consulta.executeUpdate();
+            System.out.println("Actualiza");
+        }catch(SQLException e){
+            System.out.println("E actualizar");
+            throw new SQLException(e);
+        }
     }
     
 }

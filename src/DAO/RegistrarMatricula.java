@@ -6,6 +6,7 @@ package DAO;
 
 import DTO.Matricula;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class RegistrarMatricula {
     public static void registrarMatricula(Connection cn, Matricula mt) throws SQLException {
         try {
             PreparedStatement consulta;
-            consulta = cn.prepareStatement("Insert into matricula(idMatricula,idAlumno,idMatricula,fechaMatricula) Values(?,?,?,?,?)");
+            consulta = cn.prepareStatement("Insert into matricula(idMatricula,idAlumno,idMateria,fechaMatricula) Values(?,?,?,?,?)");
             consulta.setInt(1, mt.getIdMatricula());
             consulta.setInt(2, mt.getIdAlumno());
             consulta.setInt(3, mt.getIdMatricula());
@@ -32,23 +33,34 @@ public class RegistrarMatricula {
         }
     }
     
-    public static Producto buscar(Connection cn,String codigo) throws SQLException{
-        Producto p=new Producto();
-        try{
+    public static Matricula buscar(Connection cn,Integer idMatricula) throws SQLException{
+        Matricula ma=new Matricula();
+            try{
             PreparedStatement consulta;
-            consulta=cn.prepareStatement("Select categoria as Cate , descripcion as Des , valor as Valor , stock as Stock from producto where codigo='"+codigo+"'");
+            consulta=cn.prepareStatement("Select idAlumno as ia , idMateria as im , fechaMatricula as fm from producto where idMatricula='"+idMatricula+"'");
             ResultSet rs=consulta.executeQuery();
             if(rs.next()){
-                p.setCategoria(rs.getString("Cate"));
-                p.setDescripcion(rs.getString("Des"));
-                p.setValor(rs.getInt("Valor"));
-                p.setStock(rs.getInt("Stock"));
+                ma.setIdAlumno(rs.getInt("ia"));
+                ma.setIdMateria(rs.getInt("im"));
+                ma.setFechaMatricula(rs.getDate("fm"));
                 
             }
         }catch(SQLException e){
             throw new SQLException(e);
         }
-        return p;
+        return ma;
+    }
+    
+    public static void actualizar(Connection cn,Integer idMatricula,Integer idAlumno,Integer idMateria ,Date fechaMatricula) throws SQLException{
+        try{
+            PreparedStatement consulta;
+            consulta=cn.prepareStatement("UPDATE matricula set idAlumno='"+idAlumno+"' , idMateria='"+idMateria+"' ,fechaMatricula='"+fechaMatricula+"' where idMatricula='"+idMatricula+"'");
+            consulta.executeUpdate();
+            System.out.println("Actualiza");
+        }catch(SQLException e){
+            System.out.println("E actualizar");
+            throw new SQLException(e);
+        }
     }
     
 }
