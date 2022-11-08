@@ -12,17 +12,15 @@ public class Materia {
     
     private Integer idMateria;
     private String nombre;
-    private String apellido;
     private String profesor;
     private String creditos;
 
     public Materia() {
     }
 
-    public Materia(Integer idMateria, String nombre, String apellido, String profesor, String creditos) {
+    public Materia(Integer idMateria, String nombre, String profesor, String creditos) {
         this.idMateria = idMateria;
         this.nombre = nombre;
-        this.apellido = apellido;
         this.profesor = profesor;
         this.creditos = creditos;
     }
@@ -43,14 +41,6 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getProfesor() {
         return profesor;
     }
@@ -69,7 +59,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Informacion De La Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", apellido=" + apellido + ", profesor=" + profesor + ", creditos=" + creditos + '}';
+        return "Informacion De La Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", profesor=" + profesor + ", creditos=" + creditos + '}';
     }
     
     
