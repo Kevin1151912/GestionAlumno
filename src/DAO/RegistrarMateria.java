@@ -64,4 +64,16 @@ public class RegistrarMateria {
         }
     }
     
+    public static void eliminar(Connection cn,Integer idMateria) throws SQLException{
+        try{
+            PreparedStatement consulta;
+            consulta=cn.prepareStatement("DELETE from materia where idMateria='"+idMateria+"'");
+            consulta.executeUpdate();
+            System.out.println("Elimina");
+        }catch(SQLException e){
+            System.out.println("    E eliminar");
+            throw new SQLException(e);
+        }
+    }
+    
 }
