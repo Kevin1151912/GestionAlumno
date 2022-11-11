@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class RegistrarMateria {
     
-    public static void registrarMateria(Connection cn, Materia m) throws SQLException {
+    public static void registrar(Connection cn, Materia m) throws SQLException {
         try {
             PreparedStatement consulta;
             consulta = cn.prepareStatement("Insert into materia(idMateria,nombre,profesor,creditos) Values(?,?,?,?)");

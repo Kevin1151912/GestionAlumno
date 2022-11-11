@@ -11,16 +11,16 @@ package DTO;
 public class Materia {
     
     private Integer idMateria;
-    private String nombre;
+    private String nombreM;
     private String profesor;
     private String creditos;
 
     public Materia() {
     }
 
-    public Materia(Integer idMateria, String nombre, String profesor, String creditos) {
+    public Materia(Integer idMateria, String nombreM, String profesor, String creditos) {
         this.idMateria = idMateria;
-        this.nombre = nombre;
+        this.nombreM = nombreM;
         this.profesor = profesor;
         this.creditos = creditos;
     }
@@ -34,11 +34,11 @@ public class Materia {
     }
 
     public String getNombre() {
-        return nombre;
+        return nombreM;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombreM) {
+        this.nombreM = nombreM;
     }
 
     public String getProfesor() {
@@ -59,7 +59,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Informacion De La Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", profesor=" + profesor + ", creditos=" + creditos + '}';
+        return "Informacion De La Materia{" + "idMateria=" + idMateria + ", nombre=" + nombreM + ", profesor=" + profesor + ", creditos=" + creditos + '}';
     }
     
     
