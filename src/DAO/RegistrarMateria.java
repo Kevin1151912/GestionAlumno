@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,14 +17,14 @@ import java.sql.SQLException;
  */
 public class RegistrarMateria {
     
-    public static void registrar(Connection cn, Materia m) throws SQLException {
+    public static void registrar(Connection cn, DTO.Materia m) throws SQLException {
         try {
             PreparedStatement consulta;
             consulta = cn.prepareStatement("Insert into materia(idMateria,nombre,profesor,creditos) Values(?,?,?,?)");
             consulta.setInt(1, m.getIdMateria());
-            consulta.setString(2, m.getNombre());
-            consulta.setString(4, m.getProfesor());
-            consulta.setString(5, m.getCreditos());
+            consulta.setString(2, m.getNombreM());
+            consulta.setString(3, m.getProfesor());
+            consulta.setString(4, m.getCreditos());
             consulta.executeUpdate();
             System.out.println("guarda");
         } catch (SQLException e) {
@@ -39,7 +40,7 @@ public class RegistrarMateria {
             consulta=cn.prepareStatement("Select nombre as name , profesor as pro , creditos as cre from materia where idMateria='"+idMateria+"'");
             ResultSet rs=consulta.executeQuery();
             if(rs.next()){
-                m.setNombre(rs.getString("name"));
+                m.setNombreM(rs.getString("name"));
                 m.setProfesor(rs.getString("pro"));
                 m.setCreditos(rs.getString("cre"));
                 
@@ -56,6 +57,7 @@ public class RegistrarMateria {
             consulta=cn.prepareStatement("UPDATE materia set nombre='"+nombre+"' ,profesor='"+profesor+"',creditos='"+creditos+"' where idMateria='"+idMateria+"'");
             consulta.executeUpdate();
             System.out.println("Actualiza");
+            JOptionPane.showMessageDialog(null, "Materia Actualizada");
         }catch(SQLException e){
             System.out.println("E actualizar");
             throw new SQLException(e);
@@ -68,6 +70,7 @@ public class RegistrarMateria {
             consulta=cn.prepareStatement("DELETE from materia where idMateria='"+idMateria+"'");
             consulta.executeUpdate();
             System.out.println("Elimina");
+            JOptionPane.showMessageDialog(null, "Materia Eliminada");
         }catch(SQLException e){
             System.out.println("    E eliminar");
             throw new SQLException(e);

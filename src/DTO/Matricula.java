@@ -13,14 +13,15 @@ import java.sql.Date;
 public class Matricula {
     
     private Integer idMatricula;
-    private Integer idAlumno;
-    private Integer idMateria;
-    private Date fechaMatricula;
+    private Alumno idAlumno;
+    private Materia idMateria;
+    private String fechaMatricula;
+    
 
     public Matricula() {
     }
 
-    public Matricula(Integer idMatricula, Integer idAlumno, Integer idMateria, Date fechaMatricula) {
+    public Matricula(Integer idMatricula, Alumno idAlumno, Materia idMateria, String fechaMatricula) {
         this.idMatricula = idMatricula;
         this.idAlumno = idAlumno;
         this.idMateria = idMateria;
@@ -35,33 +36,27 @@ public class Matricula {
         this.idMatricula = idMatricula;
     }
 
-    public Integer getIdAlumno() {
+    public Alumno getIdAlumno() {
         return idAlumno;
     }
 
-    public void setIdAlumno(Integer idAlumno) {
+    public void setIdAlumno(Alumno idAlumno) {
         this.idAlumno = idAlumno;
     }
 
-    public Integer getIdMateria() {
+    public Materia getIdMateria() {
         return idMateria;
     }
 
-    public void setIdMateria(Integer idMateria) {
+    public void setIdMateria(Materia idMateria) {
         this.idMateria = idMateria;
     }
 
-    public Date getFechaMatricula() {
+    public String getFechaMatricula() {
         return fechaMatricula;
     }
 
-    public void setFechaMatricula(Date fechaMatricula) {
+    public void setFechaMatricula(String fechaMatricula) {
         this.fechaMatricula = fechaMatricula;
     }
-
-    @Override
-    public String toString() {
-        return "Informacion De La Matricula{" + "idMatricula=" + idMatricula + ", idAlumno=" + idAlumno + ", idMateria=" + idMateria + ", fechaMatricula=" + fechaMatricula + '}';
-    }
-    
 }

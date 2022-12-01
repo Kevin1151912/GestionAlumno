@@ -4,12 +4,15 @@
  */
 package DAO;
 
+import DTO.Alumno;
+import DTO.Materia;
 import DTO.Matricula;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,16 +20,17 @@ import java.sql.SQLException;
  */
 public class RegistrarMatricula {
     
-    public static void registrar(Connection cn, Matricula mt) throws SQLException {
+    public static void registrar(Connection cn, DTO.Matricula mt, DTO.Alumno a, DTO.Materia m) throws SQLException {
         try {
             PreparedStatement consulta;
-            consulta = cn.prepareStatement("Insert into matricula(idMatricula,idAlumno,idMateria,fechaMatricula) Values(?,?,?,?,?)");
+            consulta = cn.prepareStatement("Insert into matricula(idmatricula,idalumno,idmateria,fechaMatricula) Values(?,?,?,?)");
             consulta.setInt(1, mt.getIdMatricula());
-            consulta.setInt(2, mt.getIdAlumno());
-            consulta.setInt(3, mt.getIdMatricula());
-            consulta.setDate(4, mt.getFechaMatricula());
+            consulta.setInt(2,  a.getIdAlumno());
+            consulta.setInt(3, m.getIdMateria());
+            consulta.setString(4, mt.getFechaMatricula());
             consulta.executeUpdate();
             System.out.println("guarda");
+            //JOptionPane.showMessageDialog(null, "Matricula Registrada");
         } catch (SQLException e) {
             System.out.println("E guardar");
             throw new SQLException(e);
@@ -35,14 +39,17 @@ public class RegistrarMatricula {
     
     public static Matricula buscar(Connection cn,Integer idMatricula) throws SQLException{
         Matricula ma=new Matricula();
+        Alumno a=new Alumno();
+        Materia m=new Materia();
+        
             try{
             PreparedStatement consulta;
             consulta=cn.prepareStatement("Select idAlumno as ia , idMateria as im , fechaMatricula as fm from producto where idMatricula='"+idMatricula+"'");
             ResultSet rs=consulta.executeQuery();
             if(rs.next()){
-                ma.setIdAlumno(rs.getInt("ia"));
-                ma.setIdMateria(rs.getInt("im"));
-                ma.setFechaMatricula(rs.getDate("fm"));
+                a.setIdAlumno(rs.getInt("ia"));
+                m.setIdMateria(rs.getInt("im"));
+                ma.setFechaMatricula(rs.getString("fm"));
                 
             }
         }catch(SQLException e){
@@ -57,6 +64,7 @@ public class RegistrarMatricula {
             consulta=cn.prepareStatement("UPDATE matricula set idAlumno='"+idAlumno+"' , idMateria='"+idMateria+"' ,fechaMatricula='"+fechaMatricula+"' where idMatricula='"+idMatricula+"'");
             consulta.executeUpdate();
             System.out.println("Actualiza");
+            JOptionPane.showMessageDialog(null, "Matricula Actualizada");
         }catch(SQLException e){
             System.out.println("E actualizar");
             throw new SQLException(e);
@@ -69,6 +77,7 @@ public class RegistrarMatricula {
             consulta=cn.prepareStatement("DELETE from matricula where idMatricula='"+idMatricula+"'");
             consulta.executeUpdate();
             System.out.println("Elimina");
+            JOptionPane.showMessageDialog(null, "Matricula Eliminada");
         }catch(SQLException e){
             System.out.println("    E eliminar");
             throw new SQLException(e);

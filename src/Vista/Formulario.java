@@ -478,8 +478,14 @@ public class Formulario extends javax.swing.JFrame {
         a.setApellido(txtApellido.getText());
         a.setEmail(txtEmail.getText());
         a.setGenero(txtGenero.getText());
-        // Control c = new Control();
-        c.registrar(a,null,null);
+        
+        c.registrarA(a);
+        
+        txtAlumno.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEmail.setText("");
+        txtGenero.setText("");
     }//GEN-LAST:event_btnGuardarAActionPerformed
 
     private void btnBuscarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAActionPerformed
@@ -507,28 +513,40 @@ public class Formulario extends javax.swing.JFrame {
         // TODO add your handling code here:
         Materia m = new Materia();
         m.setIdMateria(Integer.parseInt(txtMateria.getText()));
-        m.setNombre(txtNombreMateria.getText());
+        m.setNombreM(txtNombreMateria.getText());
         m.setProfesor(txtProfesorMateria.getText());
         m.setCreditos(txtCreditosMateria.getText());
         // Control c = new Control();
-        c.registrar(null,m,null);
+        c.registrarM(m);
+        
+        txtMateria.setText("");
+        txtNombreMateria.setText("");
+        txtProfesorMateria.setText("");
+        txtCreditosMateria.setText("");
     }//GEN-LAST:event_btnGuardarMateriaActionPerformed
 
     private void btnGuardarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarMatriculaActionPerformed
         // TODO add your handling code here:
-        Matricula mt = new Matricula();
+        Matricula mt=new Matricula();
+        Alumno a=new Alumno();
+        Materia m=new Materia();
         mt.setIdMatricula(Integer.parseInt(txtidMatricula.getText()));
-        mt.setIdAlumno(Integer.parseInt(txtidAlumnoMatricula.getText()));
-        mt.setIdMateria(Integer.parseInt(txtidMateriaMatricula.getText()));
-        mt.setFechaMatricula(Date.valueOf(txtFechaMatricula.getText()));
+        a.setIdAlumno(Integer.parseInt(txtidAlumnoMatricula.getText()));
+        m.setIdMateria(Integer.parseInt(txtidMateriaMatricula.getText()));
+        mt.setFechaMatricula(txtFechaMatricula.getText());
         // Control c = new Control();
-        c.registrar(null,null,mt);
+        c.registrarMT(mt, a ,m);
+        
+        txtidMatricula.setText("");
+        txtidAlumnoMatricula.setText("");
+        txtidMateriaMatricula.setText("");
+        txtFechaMatricula.setText("");
     }//GEN-LAST:event_btnGuardarMatriculaActionPerformed
 
     private void btnBuscarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMateriaActionPerformed
         // TODO add your handling code here:
         Materia m = c.buscarMateria(Integer.parseInt(txtMateria.getText()));
-        txtNombreMateria.setText(m.getNombre());
+        txtNombreMateria.setText(m.getNombreM());
         txtProfesorMateria.setText(m.getProfesor());
         txtCreditosMateria.setText(String.valueOf(m.getCreditos()));
     }//GEN-LAST:event_btnBuscarMateriaActionPerformed
@@ -546,6 +564,12 @@ public class Formulario extends javax.swing.JFrame {
         if(txtidMatricula.getText().length()>0 && txtidAlumnoMatricula.getText().length()>0 && txtidMateriaMatricula.getText().length()>0 && txtFechaMatricula.getText().length()>0){
         c.actualizarMt(Integer.parseInt(txtidMatricula.getText()),Integer.parseInt(txtidAlumnoMatricula.getText()), Integer.parseInt(txtidMateriaMatricula.getText()), Date.valueOf(txtFechaMatricula.getText()));
         }
+        
+        
+        txtidMatricula.setText("");
+        txtidAlumnoMatricula.setText("");
+        txtidMateriaMatricula.setText("");
+        txtFechaMatricula.setText("");
     }//GEN-LAST:event_btnActualizarMatriculaActionPerformed
 
     private void btnActualizarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAActionPerformed
@@ -553,6 +577,12 @@ public class Formulario extends javax.swing.JFrame {
         if(txtAlumno.getText().length()>0 && txtNombre.getText().length()>0 && txtApellido.getText().length()>2 && txtEmail.getText().length()>0 && txtGenero.getText().length()>0){
         c.actualizarA(Integer.parseInt(txtAlumno.getText()),txtNombre.getText(), txtApellido.getText(), txtEmail.getText(), txtGenero.getText());
         }
+        
+        txtAlumno.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEmail.setText("");
+        txtGenero.setText("");
     }//GEN-LAST:event_btnActualizarAActionPerformed
 
     private void btnActualizarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarMateriaActionPerformed
@@ -560,21 +590,42 @@ public class Formulario extends javax.swing.JFrame {
         if(txtMateria.getText().length()>0 && txtNombreMateria.getText().length()>0 && txtProfesorMateria.getText().length()>2 && txtCreditosMateria.getText().length()>0){
         c.actualizarM(Integer.parseInt(txtMateria.getText()),txtNombreMateria.getText(), txtProfesorMateria.getText(),txtCreditosMateria.getText());
         }
+        
+        txtMateria.setText("");
+        txtNombreMateria.setText("");
+        txtProfesorMateria.setText("");
+        txtCreditosMateria.setText("");
     }//GEN-LAST:event_btnActualizarMateriaActionPerformed
 
     private void btnEliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAActionPerformed
         // TODO add your handling code here:
         c.eliminar(Integer.parseInt(txtAlumno.getText()), null, null);
+        
+        txtAlumno.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEmail.setText("");
+        txtGenero.setText("");
     }//GEN-LAST:event_btnEliminarAActionPerformed
 
     private void btnEliminarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMateriaActionPerformed
         // TODO add your handling code here:
         c.eliminar(null, Integer.parseInt(txtMateria.getText()), null);
+        
+        txtMateria.setText("");
+        txtNombreMateria.setText("");
+        txtProfesorMateria.setText("");
+        txtCreditosMateria.setText("");
     }//GEN-LAST:event_btnEliminarMateriaActionPerformed
 
     private void btnEliminarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMActionPerformed
         // TODO add your handling code here:
         c.eliminar(null, null, Integer.parseInt(txtidMatricula.getText()));
+        
+        txtidMatricula.setText("");
+        txtidAlumnoMatricula.setText("");
+        txtidMateriaMatricula.setText("");
+        txtFechaMatricula.setText("");
     }//GEN-LAST:event_btnEliminarMActionPerformed
 
     /**

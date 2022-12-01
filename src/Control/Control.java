@@ -23,14 +23,35 @@ public class Control {
     private RegistrarMateria rm = new RegistrarMateria();
     private RegistrarMatricula rmt = new RegistrarMatricula();
 
-    public void registrar(Alumno a, Materia m, Matricula mt) {
+    
+    public void registrarA(Alumno a) {
 
         try {
             //   RegistrarProducto rp = new RegistrarProducto();
 
             ra.registrar(Conexion.obtener(), a);
+        } catch (Exception e) {
+
+        }
+
+    }
+    public void registrarM(Materia m) {
+
+        try {
+            //   RegistrarProducto rp = new RegistrarProducto();
+            
             rm.registrar(Conexion.obtener(), m);
-            rmt.registrar(Conexion.obtener(), mt);
+        } catch (Exception e) {
+
+        }
+
+    }
+    
+    public void registrarMT(Matricula mt, Alumno a, Materia m) {
+
+        try {
+
+            rmt.registrar(Conexion.obtener(), mt, a, m);
         } catch (Exception e) {
 
         }

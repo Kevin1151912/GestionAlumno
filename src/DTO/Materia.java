@@ -33,11 +33,11 @@ public class Materia {
         this.idMateria = idMateria;
     }
 
-    public String getNombre() {
+    public String getNombreM() {
         return nombreM;
     }
 
-    public void setNombre(String nombreM) {
+    public void setNombreM(String nombreM) {
         this.nombreM = nombreM;
     }
 

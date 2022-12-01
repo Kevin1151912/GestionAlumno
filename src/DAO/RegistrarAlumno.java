@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +59,7 @@ public class RegistrarAlumno {
             consulta=cn.prepareStatement("UPDATE alumno set nombre='"+nombre+"' , apellido='"+apellido+"' ,email='"+email+"',genero='"+genero+"' where idAlumno='"+idAlumno+"'");
             consulta.executeUpdate();
             System.out.println("Actualiza");
+            JOptionPane.showMessageDialog(null, "Alumno Actualizado");
         }catch(SQLException e){
             System.out.println("E actualizar");
             throw new SQLException(e);
@@ -70,6 +72,7 @@ public class RegistrarAlumno {
             consulta=cn.prepareStatement("DELETE from alumno where idAlumno='"+idAlumno+"'");
             consulta.executeUpdate();
             System.out.println("Elimina");
+            JOptionPane.showMessageDialog(null, "Alumno Eliminado");
         }catch(SQLException e){
             System.out.println("    E eliminar");
             throw new SQLException(e);
