@@ -30,7 +30,6 @@ public class RegistrarMatricula {
             consulta.setString(4, mt.getFechaMatricula());
             consulta.executeUpdate();
             System.out.println("guarda");
-            //JOptionPane.showMessageDialog(null, "Matricula Registrada");
         } catch (SQLException e) {
             System.out.println("E guardar");
             throw new SQLException(e);
@@ -64,7 +63,6 @@ public class RegistrarMatricula {
             consulta=cn.prepareStatement("UPDATE matricula set idAlumno='"+idAlumno+"' , idMateria='"+idMateria+"' ,fechaMatricula='"+fechaMatricula+"' where idMatricula='"+idMatricula+"'");
             consulta.executeUpdate();
             System.out.println("Actualiza");
-            JOptionPane.showMessageDialog(null, "Matricula Actualizada");
         }catch(SQLException e){
             System.out.println("E actualizar");
             throw new SQLException(e);

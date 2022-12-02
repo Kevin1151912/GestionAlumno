@@ -553,10 +553,12 @@ public class Formulario extends javax.swing.JFrame {
 
     private void btnBuscarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMatriculaActionPerformed
         // TODO add your handling code here:
+        Alumno a=new Alumno();
+        Materia m=new Materia();
         Matricula mt = c.buscarMatricula(Integer.parseInt(txtidMatricula.getText()));
-        txtidAlumnoMatricula.setText( String.valueOf(mt.getIdAlumno()));
-        txtidMateriaMatricula.setText(String.valueOf(mt.getIdMateria()));
-        txtFechaMatricula.setText(String.valueOf(mt.getFechaMatricula()));
+        txtidAlumnoMatricula.setText( String.valueOf(a.getIdAlumno()));
+        txtidMateriaMatricula.setText(String.valueOf(m.getIdMateria()));
+        txtFechaMatricula.setText(mt.getFechaMatricula());
     }//GEN-LAST:event_btnBuscarMatriculaActionPerformed
 
     private void btnActualizarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarMatriculaActionPerformed
